@@ -1,5 +1,5 @@
 import Intro from './components/into';
-import Main from './components/mainComp';
+import MainComponent from './components/mainComp';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Intro />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/main" element={<MainComponent />} />
       </Routes>
     </BrowserRouter>
   );

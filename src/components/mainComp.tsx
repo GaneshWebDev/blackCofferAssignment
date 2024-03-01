@@ -6,7 +6,7 @@ import Footer from './footer';
 import Explore from './explore';
 import Network from './network';
 import Chat from './chat';
-export default function Main() {
+export default function MainComponent() {
     const [headerHeight, setHeaderHeight] = useState(0);
     const [searchBarHeight, setSearchBarHeight] = useState(0);
     const [selectedIcon, setSelectedIcon] = useState('explore');
