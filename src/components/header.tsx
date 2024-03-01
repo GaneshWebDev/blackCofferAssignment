@@ -1,22 +1,22 @@
-import {useState,useEffect,useRef,useLayoutEffect} from 'react';
+import {useState,useEffect,useRef,useLayoutEffect,RefObject} from 'react';
 import { MoonIcon,SunIcon,UserIcon,UserGroupIcon,BriefcaseIcon,BuildingStorefrontIcon ,HeartIcon, ShoppingBagIcon, IdentificationIcon,HashtagIcon,PencilSquareIcon,MapPinIcon,ChatBubbleOvalLeftEllipsisIcon,PhoneIcon} from '@heroicons/react/16/solid';
 interface HeaderProps {
     fun: (height: number) => void,
     selectedIcon:string,
-    personal:HTMLDivElement,
-    business:HTMLDivElement,
-    merchant:HTMLDivElement,
-    newInvitations:HTMLDivElement,
-    allInvitations:HTMLDivElement,
+    personal:RefObject<HTMLDivElement>,
+    business:RefObject<HTMLDivElement>,
+    merchant:RefObject<HTMLDivElement>,
+    newInvitations:RefObject<HTMLDivElement>,
+    allInvitations:RefObject<HTMLDivElement>,
     exploreSelected:string,
     networkSelected:string,
     chatSelected:string,
-    chats:HTMLDivElement,
-    calls:HTMLDivElement
+    chats:RefObject<HTMLDivElement>,
+    calls:RefObject<HTMLDivElement>
   }
 export default function Header({ fun,personal,business,merchant,selectedIcon,newInvitations,allInvitations,exploreSelected,networkSelected,chatSelected,chats,calls }: HeaderProps){
     const [theme,setTheme]=useState('light');
-    const elementRef = useRef(null);
+    const elementRef = useRef<HTMLDivElement>(null);
     console.log('header',selectedIcon);
     /* getting height of header dynamically so that it below elements can auto automatically adjust margin tops to avoid overlapping */
     useLayoutEffect(() => {

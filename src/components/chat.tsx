@@ -1,8 +1,9 @@
 import Chats from "./chats"
 import Calls from "./calls"
+import { RefObject } from "react"
 interface ChatProps{
-    chats:HTMLDivElement,
-    calls:HTMLDivElement,
+    chats:RefObject<HTMLDivElement>,
+    calls:RefObject<HTMLDivElement>,
 
 }
 export default function Chat({chats,calls}:ChatProps){

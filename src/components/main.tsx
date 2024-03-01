@@ -6,21 +6,20 @@ import Footer from './footer';
 import Explore from './explore';
 import Network from './network';
 import Chat from './chat';
-import Intro from './into';
 export default function Main() {
-  const [headerHeight,setHeaderHeight]=useState(0);
-  const [searchBarHeight,setSearchBarHeight]=useState(0);
-  const [selectedIcon,setSelectedIcon]=useState('explore');
-  const personal=useRef<HTMLDivElement | null>(null);
-  const business=useRef<HTMLDivElement | null>(null);
-  const merchant=useRef<HTMLDivElement | null>(null);
-  const newInvitations=useRef<HTMLDivElement | null>(null);
-  const allInvitations=useRef<HTMLDivElement | null>(null);
-  const chats=useRef<HTMLDivElement | null>(null);
-  const calls=useRef<HTMLDivElement | null>(null);
-  const [exploreSelected,setExploreSelected]=useState('personal');
-  const [networkSelected,setNetworkSelected]=useState('newInvitation');
-  const [chatSelected,setChatSelected]=useState('chats');
+    const [headerHeight, setHeaderHeight] = useState(0);
+    const [searchBarHeight, setSearchBarHeight] = useState(0);
+    const [selectedIcon, setSelectedIcon] = useState('explore');
+    const personal = useRef<HTMLDivElement>(null);
+    const business = useRef<HTMLDivElement>(null);
+    const merchant = useRef<HTMLDivElement>(null);
+    const newInvitations = useRef<HTMLDivElement>(null);
+    const allInvitations = useRef<HTMLDivElement>(null);
+    const chats = useRef<HTMLDivElement>(null);
+    const calls = useRef<HTMLDivElement>(null);
+    const [exploreSelected, setExploreSelected] = useState('personal');
+    const [networkSelected, setNetworkSelected] = useState('newInvitation');
+    const [chatSelected, setChatSelected] = useState('chats');
    useEffect(()=>{
         initFlowbite();
    },[]);
@@ -73,8 +72,8 @@ useEffect(() => {
 /* scroll handling function for network page */
 const handleScrollNetwork=()=>{
   const networkElement = document.getElementById('network');
-  const newInvitationsRect = newInvitations.current.getBoundingClientRect();
-  const allInvitationsRect = allInvitations.current.getBoundingClientRect();
+  const newInvitationsRect = newInvitations.current!.getBoundingClientRect();
+  const allInvitationsRect = allInvitations.current!.getBoundingClientRect();
   if (networkElement) {
       const { left: networkLeft } = networkElement.getBoundingClientRect();
       
@@ -92,9 +91,9 @@ const handleScrollNetwork=()=>{
 /* scroll handling function for explore contacts groups page */
 const handleScrollExplorer=()=>{
   const exploreElement = document.getElementById('explore');
-  const personalRect = personal.current.getBoundingClientRect();
-  const businessRect = business.current.getBoundingClientRect();
-  const merchantRect = merchant.current.getBoundingClientRect();
+  const personalRect = personal.current!.getBoundingClientRect();
+  const businessRect = business.current!.getBoundingClientRect();
+  const merchantRect = merchant.current!.getBoundingClientRect();
   if (exploreElement) {
       const { left: exploreLeft } = exploreElement.getBoundingClientRect();
       
@@ -113,10 +112,11 @@ const handleScrollExplorer=()=>{
   }
 }
 /* scroll handling function for chat page */
+
 const handleScrollChat=()=>{
   const chatElement = document.getElementById('chat');
-  const chatsRect = chats.current.getBoundingClientRect();
-  const callsRect = calls.current.getBoundingClientRect();
+  const chatsRect = chats.current!.getBoundingClientRect();
+  const callsRect = calls.current!.getBoundingClientRect();
   if (chatElement) {
       const { left: chatLeft } = chatElement.getBoundingClientRect();
       
@@ -139,7 +139,7 @@ const handleScrollChat=()=>{
     <div >
       <Header fun={setHeaderHeight} personal={personal} business={business} merchant={merchant} selectedIcon={selectedIcon} newInvitations={newInvitations}  allInvitations={allInvitations} exploreSelected={exploreSelected} networkSelected={networkSelected} chatSelected={chatSelected} calls={calls} chats={chats}/>
       <Search margin={headerHeight} fun={setSearchBarHeight}/>
-      {(selectedIcon=='explore'|| selectedIcon=='contacts' || selectedIcon=='groups')&&<Explore header={headerHeight} search={searchBarHeight} personal={personal} business={business} merchant={merchant} newInvitations={newInvitations} selectedIcon={selectedIcon}/>}
+      {(selectedIcon=='explore'|| selectedIcon=='contacts' || selectedIcon=='groups')&&<Explore header={headerHeight} search={searchBarHeight} personal={personal} business={business} merchant={merchant}  selectedIcon={selectedIcon}/>}
       {selectedIcon=='network'&&<Network newInvitations={newInvitations}  allInvitations={allInvitations}/>}
       {selectedIcon=='chat'&&<Chat chats={chats} calls={calls}/>}
       <Footer selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon}/>

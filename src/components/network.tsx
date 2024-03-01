@@ -1,8 +1,9 @@
 import NewInvitations from "./newInvitations";
 import AllInvitations from "./allInvitations";
+import { RefObject } from "react";
 interface NetworkProps{
-    newInvitations:HTMLDivElement,
-    allInvitations:HTMLDivElement,
+    newInvitations:RefObject<HTMLDivElement>,
+    allInvitations:RefObject<HTMLDivElement>,
 
 }
 export default function Network({newInvitations,allInvitations}:NetworkProps){
